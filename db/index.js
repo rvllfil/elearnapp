@@ -1,11 +1,12 @@
 const Pool = require('pg').Pool
+const config = require('config')
 
 pool = new Pool({
-  user: "dbadmin",
-  password: "admin123",
-  database: 'elearnapp',
-  host: '0.0.0.0',
-  port: 5432
+  user: config.get('dbConfig').user,
+  password: config.get('dbConfig').password,
+  database: config.get('dbConfig').database,
+  host: config.get('dbConfig').host,
+  port: config.get('dbConfig').port
 })
 
 module.exports = pool

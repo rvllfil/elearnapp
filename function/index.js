@@ -6,6 +6,14 @@ exports.data = (obj, keys) => {
   return result
 }
 
+exports.dataLiteral = (arrs) => {
+  let result = []
+  arrs.map(arr => {
+    result = [...result, "'"+arr+"'"]
+  })
+  return result
+}
+
 exports.dataAnd = (obj, keys) => { 
   let arr = []
   let result

@@ -8,6 +8,8 @@ app.use(express.json())
 app.use('/api/bab', require('./routes/api/bab'))
 app.use('/api/sub-bab', require('./routes/api/sub_bab'))
 app.use('/api/materi', require('./routes/api/materi'))
+app.use('/api/users', require('./routes/api/users'))
+app.use('/api/auth', require('./routes/api/auth'))
 
 
 

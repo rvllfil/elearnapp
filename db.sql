@@ -47,7 +47,7 @@ CREATE TABLE users(
   user_id INT GENERATED ALWAYS AS IDENTITY,
   username VARCHAR(255) NOT NULL,
   nama VARCHAR(255) NOT NULL,
-  jenis_kelamin VARCHAR(20) NOT NULL,
+  jenis_kelamin VARCHAR(20),
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   role VARCHAR(20) NOT NULL,
