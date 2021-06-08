@@ -1,0 +1,23 @@
+.violet {
+  background-color: #7293F5 !important;
+  border-color: #7293F5 !important;
+}
+
+.violett {
+  color: #7293F5;
+}
+
+.violet:hover {
+  background-color: #3d66e2 !important;
+  border-color: #3d66e2 !important;
+}
+
+.form-control:focus {
+  border-color: #7293F5;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(114, 147, 245, 0.6);
+}
+
+
+.container {
+  max-width: 560px;
+}

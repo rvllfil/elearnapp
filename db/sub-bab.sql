@@ -8,4 +8,10 @@ VALUES
   (1,5,'eksponen'),
   (1,6,'quotient dan remainder'),
   (2,1,'strings'),
-  (2,2,'garis baru');
+  (2,2,'garis baru'),
+  (2,3,'operasi string'),
+  (2,4,'variabel'),
+  (2,5,'bekerja dengan variabel'),
+  (2,6,'input data'),
+  (2,7,'bekerja dengan input');
+
