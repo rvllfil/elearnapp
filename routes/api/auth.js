@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   }
 
   // Check for existing user
-  const User = await pool.query("SELECT * FROM users where username = $1", [username])
+  const User = await pool.query("SELECT * FROM users where username = $1 OR email = $1", [username])
   const user = User.rows[0]
   if(!user) return res.status(400).json({msg: '*User tidak ditemukan!'})
 

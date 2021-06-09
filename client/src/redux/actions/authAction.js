@@ -49,10 +49,10 @@ export const register = ({username, nama, jenis_kelamin, email, password}, histo
   })
   axios.post('api/users', body, config)
     .then(res => {
+      dispatch(clearErrors())
       dispatch({
         type: REGISTER_SUCCESS,
       })
-      dispatch(clearErrors())
       history.push('/login')
     })
     .catch(err => {
