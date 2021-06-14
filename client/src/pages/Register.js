@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import logo from '../logo.jpg'
+import logo from '../img/logo.jpg'
 import { Link, useHistory } from 'react-router-dom'
 import  Container  from 'react-bootstrap/Container'
 import { useEffect, useState } from 'react'

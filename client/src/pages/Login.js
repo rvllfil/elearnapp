@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import logo from '../logo.jpg'
+import logo from '../img/logo.jpg'
 import { Link, useHistory } from 'react-router-dom'
 import  Container  from 'react-bootstrap/Container'
 import { useEffect, useState } from 'react'
@@ -39,19 +39,21 @@ const Login = ({login, error}) => {
     return isInValid
   }
   const history = useHistory()
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     if(validate()){
       setIsInValid({
         password: false,
         confirmed: false
       })
-      login(data, history)
-      setData({
-        username: '',
-        password: ''
-      })
+      
+      await login(data, history)
+      console.log(data)
     }
+    setData({
+      username: '',
+      password: ''
+    })
   }
 
     

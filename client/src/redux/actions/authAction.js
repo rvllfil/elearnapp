@@ -83,7 +83,7 @@ export const login = ({username, password}, history) => dispatch => {
         payload: res.data
       })
       dispatch(clearErrors())
-      dispatch(loadUser())
+      console.log(res.data.user.role)
       if(res.data.user.role === 'user') {
         history.push('/home')
       } else if ((res.data.user.role === 'admin'))

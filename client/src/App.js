@@ -8,11 +8,11 @@ import { useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const allBab = store.dispatch(getAllBab())
   const user = store.dispatch(loadUser())
+  const allBab = store.dispatch(getAllBab())
   useEffect(() => {
     return () => {
-      store.dispatch(getAllBab())
+      store.dispatch(loadUser())
       store.dispatch(getAllBab())
     }
   },[allBab, user])
