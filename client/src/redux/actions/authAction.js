@@ -47,7 +47,7 @@ export const register = ({username, nama, jenis_kelamin, email, password}, histo
     password,
     role
   })
-  axios.post('api/users', body, config)
+  axios.post('/api/users', body, config)
     .then(res => {
       dispatch(clearErrors())
       dispatch({
@@ -76,7 +76,7 @@ export const login = ({username, password}, history) => dispatch => {
     username,
     password
   })
-  axios.post('api/auth', body, config)
+  axios.post('/api/auth', body, config)
     .then(res => {
       dispatch({
         type: LOGIN_SUCCESS,

@@ -150,7 +150,7 @@ const Register = ({register, error}) => {
           <img className='py-5' src={logo} alt="OWL-Ulin" width="100" />
         </div>
 
-        <Form className='px-4' method='post' onSubmit={onSubmit}>
+        <Form className='px-2' method='post' onSubmit={onSubmit}>
           <Form.Group className=' mt-4'>
             <Form.Control 
               onChange={onChange} 

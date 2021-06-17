@@ -15,7 +15,7 @@ function App() {
       store.dispatch(loadUser())
       store.dispatch(getAllBab())
     }
-  },[allBab, user])
+  },[user, allBab])
   return (
     <Provider store={store}>
       <BrowserRouter>

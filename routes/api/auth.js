@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
 // @desc    Get user data
 // @access  Private
 router.get('/user', auth, async (req, res) => {
-  const User = await pool.query("SELECT * FROM users WHERE user_id = $1", [req.user.user_id])
+  const User = await pool.query("SELECT * FROM users WHERE user_id = $1", [req.user.id])
   const user = User.rows[0]
   if(!user) return res.status(400).json({msg: '*User tidak ditemukan!'})
   res.status(200).json(user)

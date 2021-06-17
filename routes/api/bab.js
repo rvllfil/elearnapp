@@ -23,7 +23,28 @@ router.get('/all', async (req, res) => {
                 select materi_id, urutan_materi, judul_materi, isi_materi
                 from materi where materi.sub_bab_id = sub_bab.sub_bab_id
               ) m
-            ) as materi
+            ) as materi,
+            (
+              select array_to_json(array_agg(q))
+              from (
+                select quiz_id, judul_quiz,
+                (
+                  select array_to_json(array_agg(sq))
+                  from (
+                    select soal_quiz_id, text_soal,
+                    (
+                      select array_to_json(array_agg(jq)) 
+                      from (
+                        select jawaban_quiz_id, text_jawaban, benar
+                        from jawaban_quiz where jawaban_quiz.soal_quiz_id = soal_quiz.soal_quiz_id
+                      ) jq
+                    ) as jawaban_quiz
+                    from soal_quiz where soal_quiz.quiz_id = quiz.quiz_id
+                  ) sq
+                ) as soal_quiz
+                from quiz where quiz.sub_bab_id = sub_bab.sub_bab_id
+              ) q
+            ) as quiz
             from sub_bab where sub_bab.bab_id = bab.bab_id
           ) s
         ) as sub_bab
@@ -40,6 +61,22 @@ router.get('/all', async (req, res) => {
     })
   }
 })
+
+
+// (
+//   select array_to_json(array_agg(sq)) 
+//   from (
+//     select soal_quiz_id, text_soal
+//     (
+//       select array_to_json(array_agg(jq)) 
+//       from (
+//         select jawaban_quiz_id, text_jawaban, benar
+//         from jawaban_quiz where jawaban_quiz.soal_quiz_id = soal_quiz.soal_quiz_id
+//       ) jq
+//     ) as jawaban_quiz
+//     from soal_quiz where soal_quiz.quiz_id = quiz.quiz_id
+//   ) sq
+// ) as soal_quiz
 
 // @route   GET api/bab
 // @desc    Get All Bab

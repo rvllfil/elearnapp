@@ -73,7 +73,7 @@ const Login = ({login, error}) => {
         <div className='mt-5 d-flex justify-content-center'>
           <img className='py-5 mt-3' src={logo} alt="OWL-Ulin" width="100" />
         </div>
-        <Form className='px-4 mt-2' method='post' onSubmit={onSubmit}>
+        <Form className='px-2 mt-2' method='post' onSubmit={onSubmit}>
           <Form.Group className=' mt-4'>
             <Form.Control 
               onChange={onChange}
@@ -112,7 +112,7 @@ const Login = ({login, error}) => {
           <Button size='lg' className='violet font-weight-bold' variant="primary" type="submit" block>
             MASUK
           </Button>
-          <div className='mt-5 d-flex flex-row justify-content-center'>
+          <div className='mt-5 d-flex flex-row justify-content-center mb-5'>
             <div>Tidak punya akun ?</div>
             <Link className='violett ml-2' to='/daftar'>Daftar</Link>
           </div>
