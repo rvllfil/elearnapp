@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 
+
 const LogRoute = ({ 
   comp: Component,
   auth: { user, isLoading }, 

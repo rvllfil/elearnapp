@@ -50,9 +50,9 @@ router.get('/:id', async (req, res) => {
 // @desc    Create Sub Bab
 // @access  Public
 router.post('/', async (req, res) => {
-  const {bab_id, judul_sub_bab} = req.body
+  const {bab_id, judul_sub_bab, urutan_sub_bab} = req.body
   try {
-    const newSubBab = await pool.query("INSERT INTO sub_bab (bab_id, judul_sub_bab) VALUES ($1, $2) RETURNING *", [bab_id, judul_sub_bab])
+    const newSubBab = await pool.query("INSERT INTO sub_bab (bab_id, judul_sub_bab, urutan_sub_bab) VALUES ($1, $2, $3) RETURNING *", [bab_id, judul_sub_bab, urutan_sub_bab])
     if(!newSubBab) throw Error('Terjadi Kesalahan ketika menyimpan Data Sub Bab')
     res.status(201).json(newSubBab.rows[0])
   } catch (e) {
@@ -87,9 +87,9 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const {id} = req.params
   try {
-    const deleteSubBab = await pool.query("DELETE FROM sub_bab WHERE sub_bab_id = $1", [id])
+    const deleteSubBab = await pool.query("DELETE FROM sub_bab WHERE sub_bab_id = $1 RETURNING *", [id])
     if(!deleteSubBab) throw Error("Data Sub Bab tidak ditemukan")
-    res.status(200).json({msg: 'data berhasil dihapus'})
+    res.status(200).json(deleteSubBab.rows[0])
   } catch (e) {
     res.status(400).json({
       msg: e.message

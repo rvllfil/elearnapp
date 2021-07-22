@@ -70,53 +70,55 @@ const Login = ({login, error}) => {
   return (
     <>
       <Container>
-        <div className='mt-5 d-flex justify-content-center'>
-          <img className='py-5 mt-3' src={logo} alt="OWL-Ulin" width="100" />
-        </div>
-        <Form className='px-2 mt-2' method='post' onSubmit={onSubmit}>
-          <Form.Group className=' mt-4'>
-            <Form.Control 
-              onChange={onChange}
-              isInvalid={isInValid.username ? 'true' : ''}
-              size='lg' 
-              type="text" 
-              placeholder="Username atau email" 
-              name='username'
-              value={data.username}
-            />
-            <Form.Control.Feedback type="invalid">
-              Harap masukan username atau email
-            </Form.Control.Feedback>
-          </Form.Group>
-          
-          <Form.Group className='mb-4 mt-4'>
-            <Form.Control 
-              onChange={onChange}
-              isInvalid={isInValid.password ? 'true' : ''}
-              size='lg' 
-              type="password" 
-              placeholder="Password" 
-              name='password'
-              value={data.password}
-            />
-            <Form.Control.Feedback type="invalid">
-              Harap masukan password.
-            </Form.Control.Feedback>
-          </Form.Group>
-          {message && 
-            <div className='mb-2 d-flex flex-row'>
-              <ExclamationCircle size={24} color='red'/>
-              <h5 className='violett ml-2 text-danger'>{message}</h5>
-            </div>
-          }
-          <Button size='lg' className='violet font-weight-bold' variant="primary" type="submit" block>
-            MASUK
-          </Button>
-          <div className='mt-5 d-flex flex-row justify-content-center mb-5'>
-            <div>Tidak punya akun ?</div>
-            <Link className='violett ml-2' to='/daftar'>Daftar</Link>
+        <div className='cont'>
+          <div className='mt-5 d-flex justify-content-center'>
+            <img className='py-5 mt-3' src={logo} alt="OWL-Ulin" width="100" />
           </div>
-        </Form>
+          <Form className='px-2 mt-2' method='post' onSubmit={onSubmit}>
+            <Form.Group className=' mt-4'>
+              <Form.Control 
+                onChange={onChange}
+                isInvalid={isInValid.username ? 'true' : ''}
+                size='lg' 
+                type="text" 
+                placeholder="Username atau email" 
+                name='username'
+                value={data.username}
+              />
+              <Form.Control.Feedback type="invalid">
+                Harap masukan username atau email
+              </Form.Control.Feedback>
+            </Form.Group>
+            
+            <Form.Group className='mb-4 mt-4'>
+              <Form.Control 
+                onChange={onChange}
+                isInvalid={isInValid.password ? 'true' : ''}
+                size='lg' 
+                type="password" 
+                placeholder="Password" 
+                name='password'
+                value={data.password}
+              />
+              <Form.Control.Feedback type="invalid">
+                Harap masukan password.
+              </Form.Control.Feedback>
+            </Form.Group>
+            {message && 
+              <div className='mb-2 d-flex flex-row'>
+                <ExclamationCircle size={24} color='red'/>
+                <h5 className='violett ml-2 text-danger'>{message}</h5>
+              </div>
+            }
+            <Button size='lg' className='violet font-weight-bold' variant="primary" type="submit" block>
+              MASUK
+            </Button>
+            <div className='mt-5 d-flex flex-row justify-content-center mb-5'>
+              <div>Tidak punya akun ?</div>
+              <Link className='violett ml-2' to='/daftar'>Daftar</Link>
+            </div>
+          </Form>
+        </div>
       </Container>
     </>
   )

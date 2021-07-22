@@ -137,6 +137,8 @@ const SoalQuiz = ({bab, loading}) => {
           data={dataJawaban} 
           jawaban={benar()}
           back={back}
+          bab_id={bab_id}
+          sub_bab_id={sub_bab_id}
         />
       )}
     

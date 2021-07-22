@@ -11,8 +11,8 @@ const NavBar = () => {
 
   return (
     <>
-        <div className='navbar'>
-          <div className='menu-bars bg-red'>
+        <div className='navbar1'>
+          <div className='menu-bars1 bg-red'>
             <div className='d-flex align-items-center bg-primary p-2'>
               <List size={30} onClick={showSidebar} color='#fff'/>
             </div>
@@ -22,18 +22,18 @@ const NavBar = () => {
           </Link>
           <div></div>
           
-          <Nav className="ml-auto nav">
+          <div className="ml-auto nav1">
             <Link to='/profil' className='py-auto'>
               <div className='h6 font-weight-bold'>Profil</div>
             </Link>
             <Link to='/home' className='py-auto ml-4'>
               <Logout sty='h6 font-weight-bold'/>
             </Link>
-          </Nav>
+          </div>
           
         </div>
         
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+        <nav className={sidebar ? 'nav-menu1 active' : 'nav-menu1'}>
           <div className='pt-5 pl-5 d-flex flex-column justify-content-start'>
             <div className='d-flex flex-row-reverse mr-5'>
               <XLg color='white' size={30} onClick={showSidebar}/>

@@ -1,0 +1,5 @@
+export const CREATE_QUIZ = "CREATE_QUIZ"
+export const RETRIEVE_QUIZ = "RETRIEVE_QUIZ"
+export const UPDATE_QUIZ = "UPDATE_QUIZ"
+export const DELETE_QUIZ = "DELETE_QUIZ"
+export const LOADING_QUIZ = "LOADING_QUIZ"

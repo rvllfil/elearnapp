@@ -123,6 +123,46 @@ router.post('/', async (req, res) => {
   }
 })
 
+// @route   POST api/users/admin
+// @desc    Register New Admin
+// @access  Public
+router.post('/admin', async (req, res) => {
+  let {username, nama, jenis_kelamin, email, password} = req.body
+  const role = 'admin'
+  if(!username || !nama || !jenis_kelamin || !email || !password) {
+    return res.status(400).json({msg: 'Harap Masukan Semua Data'})
+  }
+
+  try {
+    // Check Username
+    const userName = await pool.query("SELECT username from users WHERE username = $1", [username])
+    if(userName.rows.length > 0) {
+      if(userName.rows[0].username === username) throw Error('*username telah digunakan')
+    }
+    // Check email
+    const userEmail = await pool.query("SELECT email from users WHERE email = $1", [email])
+    if(userEmail.rows.length > 0) {
+      if(userEmail.rows[0].email === email) throw Error('*Alamat email user telah digunakan')
+    }
+
+    // Create Salt & Hash
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(password, salt, async (err, hash) => {
+        if(err) throw err
+        password = hash
+        // Save User
+        const newUser = await pool.query("INSERT INTO users (username, nama, jenis_kelamin, email, password, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [username, nama, jenis_kelamin, email, password, role])
+        res.status(201).json(newUser.rows)
+      })
+    })
+    
+  } catch (e) {
+    res.status(400).json({
+      msg: e.message
+    })
+  }
+})
+
 // @route   PUT api/bab
 // @desc    Edit Bab
 // @access  Public

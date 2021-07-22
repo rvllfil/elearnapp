@@ -50,9 +50,9 @@ router.get('/:id', async (req, res) => {
 // @desc    Create Progress
 // @access  Public
 router.post('/', async (req, res) => {
-  const {user_id, sub_bab_id, completed, waktu} = req.body
+  const {user_id, bab_id, sub_bab_id} = req.body
   try {
-    const newProgress = await pool.query("INSERT INTO progress (user_id, sub_bab_id, completed, waktu) VALUES ($1, $2, $3, $4) RETURNING *", [user_id, sub_bab_id, completed, waktu])
+    const newProgress = await pool.query("INSERT INTO progress (user_id, bab_id, sub_bab_id) VALUES ($1, $2, $3) RETURNING *", [user_id, bab_id, sub_bab_id])
     if(!newProgress.rows) throw Error('Terjadi Kesalahan ketika menyimpan Data Progress')
     res.status(201).json(newProgress.rows[0])
   } catch (e) {

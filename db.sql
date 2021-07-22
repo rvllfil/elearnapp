@@ -58,10 +58,15 @@ DROP TABLE IF EXISTS progress CASCADE;
 CREATE TABLE progress(
   progress_id INT GENERATED ALWAYS AS IDENTITY,
   user_id INT NOT NULL,
+  bab_id INT NOT NULL,
   sub_bab_id INT NOT NULL,
-  completed BOOLEAN DEFAULT FALSE,
-  waktu TIMESTAMPTZ,
+  completed BOOLEAN DEFAULT TRUE,
+  waktu TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(progress_id), 
+  CONSTRAINT fk_bab
+    FOREIGN KEY(bab_id)
+      REFERENCES bab(bab_id)
+      ON DELETE CASCADE,
   CONSTRAINT fk_sub_bab
     FOREIGN KEY(sub_bab_id)
       REFERENCES sub_bab(sub_bab_id)
@@ -71,6 +76,7 @@ CREATE TABLE progress(
       REFERENCES users(user_id)
       ON DELETE CASCADE
 );
+
 DROP TABLE IF EXISTS quiz CASCADE;
 CREATE TABLE quiz(
   quiz_id INT GENERATED ALWAYS AS IDENTITY,

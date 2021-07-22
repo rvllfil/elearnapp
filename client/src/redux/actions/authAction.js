@@ -82,6 +82,7 @@ export const login = ({username, password}, history) => dispatch => {
         type: LOGIN_SUCCESS,
         payload: res.data
       })
+      dispatch(loadUser())
       dispatch(clearErrors())
       console.log(res.data.user.role)
       if(res.data.user.role === 'user') {
