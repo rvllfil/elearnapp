@@ -32,8 +32,7 @@ export const createSubbab = (data) => dispatch => {
     )
     .then(dispatch(setAlertSuccess('Data berhasil ditambahkan')))
     .catch(err =>
-      dispatch(setAlertFailed
-        (`wew`))
+      dispatch(setAlertFailed(`${err.response.status}: ${err.response.data.msg}`))
     );
 }
 

@@ -1,24 +1,24 @@
-import Form from "react-bootstrap/Form"
 import { connect } from "react-redux"
 import { SuccessAlert, FailedAlert } from './AdminAlert'
 import { clearAlert } from '../../redux/actions/alertActions'
 import { Spinner } from "react-bootstrap"
+import Form from "react-bootstrap/Form"
 
-
-const ModalTambahSubbab = ({
+const ModalUbahBab = ({
   onChange, 
   onSubmit,
-  dataSubbab,
+  dataBab,
   isInvalid,
   alert,
   clearAlert
 }) => {
+  
   return (
-    <div className="modal fade" id="tambah-sub-bab" style={{display: 'none'}} aria-hidden="true">
+    <div className="modal fade" id="ubah-bab" style={{display: 'none'}} aria-hidden="true">
       <div className="modal-dialog modal-default">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">Tambah Sub Bab</h4>
+            <h4 className="modal-title">Ubah Bab</h4>
             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -40,47 +40,32 @@ const ModalTambahSubbab = ({
             <div className="row">
               <div className="col-md">
                 <Form.Group>
-                  <Form.Label>Bab Id</Form.Label>
-                  <Form.Control
-                    onKeyDown={numeric} 
-                    onChange={onChange} 
-                    isInvalid={isInvalid.bab_id ? 'true' : ''}
-                    type="text" 
-                    placeholder="Bab Id" 
-                    name='bab_id'
-                    value={dataSubbab.bab_id}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Harap masukan bab id.
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group>
                   <Form.Label>Judul</Form.Label>
                   <Form.Control 
                     onChange={onChange} 
-                    isInvalid={isInvalid.judul_sub_bab ? 'true' : ''}
+                    isInvalid={isInvalid.judul_bab ? 'true' : ''}
                     type="text" 
                     placeholder="Judul" 
-                    name='judul_sub_bab'
-                    value={dataSubbab.judul_sub_bab}
+                    name='judul_bab'
+                    value={dataBab.judul_bab}
                   />
                   <Form.Control.Feedback type="invalid">
                     Harap masukan judul.
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Urutan Sub Bab</Form.Label>
+                  <Form.Label>Urutan Bab</Form.Label>
                   <Form.Control
                     onKeyDown={numeric} 
                     onChange={onChange} 
-                    isInvalid={isInvalid.urutan_sub_bab ? 'true' : ''}
+                    isInvalid={isInvalid.urutan_bab ? 'true' : ''}
                     type="text" 
                     placeholder="Urutan Sub Bab" 
-                    name='urutan_sub_bab'
-                    value={dataSubbab.urutan_sub_bab}
+                    name='urutan_bab'
+                    value={dataBab.urutan_bab}
                   />
                   <Form.Control.Feedback type="invalid">
-                    Harap masukan urutan sub bab.
+                    Harap masukan urutan bab.
                   </Form.Control.Feedback>
                 </Form.Group>
               </div>
@@ -100,6 +85,7 @@ const numeric = e => {
   if(e.keyCode > 57) return e.preventDefault()
 }
 
-export default connect(null, {
+
+export default connect(null , {
   clearAlert
-})(ModalTambahSubbab)
+})(ModalUbahBab)

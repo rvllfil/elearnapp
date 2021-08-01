@@ -62,22 +62,6 @@ router.get('/all', async (req, res) => {
   }
 })
 
-
-// (
-//   select array_to_json(array_agg(sq)) 
-//   from (
-//     select soal_quiz_id, text_soal
-//     (
-//       select array_to_json(array_agg(jq)) 
-//       from (
-//         select jawaban_quiz_id, text_jawaban, benar
-//         from jawaban_quiz where jawaban_quiz.soal_quiz_id = soal_quiz.soal_quiz_id
-//       ) jq
-//     ) as jawaban_quiz
-//     from soal_quiz where soal_quiz.quiz_id = quiz.quiz_id
-//   ) sq
-// ) as soal_quiz
-
 // @route   GET api/bab
 // @desc    Get All Bab
 // @access  Public
@@ -124,9 +108,9 @@ router.get('/:id', async (req, res) => {
 // @desc    Create Bab
 // @access  Public
 router.post('/', async (req, res) => {
-  const {judul_bab} = req.body
+  const {judul_bab, urutan_bab} = req.body
   try {
-    const newBab = await pool.query("INSERT INTO bab (judul_bab) VALUES ($1) RETURNING *", [judul_bab])
+    const newBab = await pool.query("INSERT INTO bab (judul_bab, urutan_bab) VALUES ($1, $2) RETURNING *", [judul_bab, urutan_bab])
     if(!newBab) throw Error('Terjadi Kesalahan ketika menyimpan Data Bab')
     res.status(201).json(newBab.rows[0])
   } catch (e) {
@@ -161,9 +145,9 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const {id} = req.params
   try {
-    const deleteBab = await pool.query("DELETE FROM bab WHERE bab_id = $1", [id])
+    const deleteBab = await pool.query("DELETE FROM bab WHERE bab_id = $1 RETURNING *", [id])
     if(!deleteBab) throw Error("Data Bab tidak ditemukan")
-    res.status(200).json({msg: 'data berhasil dihapus'})
+    res.status(200).json(deleteBab.rows[0])
   } catch (e) {
     res.status(400).json({
       msg: e.message
