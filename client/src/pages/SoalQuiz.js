@@ -6,7 +6,7 @@ import { useParams } from 'react-router'
 import Result from '../components/Result'
 import Soal from './Soal'
 
-const SoalQuiz = ({bab, loading}) => {
+const SoalQuiz = ({allMateri, loading}) => {
   const { bab_id, sub_bab_id } = useParams()
   const [subBab, setSubBab] = useState([])
   const [quiz, setQuiz] = useState({})
@@ -16,8 +16,8 @@ const SoalQuiz = ({bab, loading}) => {
   const [alert, setAlert] = useState(false)
 
   useEffect(() => {
-    setSubBab(bab.filter(data => data.bab_id === parseInt(bab_id)).map(bab => bab.sub_bab.filter(sub_bab => sub_bab.sub_bab_id === parseInt(sub_bab_id))))
-  }, [bab, bab_id, sub_bab_id])
+    setSubBab(allMateri.filter(data => data.bab_id === parseInt(bab_id)).map(allMateri => allMateri.sub_bab.filter(sub_bab => sub_bab.sub_bab_id === parseInt(sub_bab_id))))
+  }, [allMateri, bab_id, sub_bab_id])
 
   useEffect(() => {
     if(subBab !== undefined) {
@@ -148,8 +148,8 @@ const SoalQuiz = ({bab, loading}) => {
 
 const mapStateToProps = (state) => {
   return {
-    bab: state.bab.bab,
-    loading: state.bab.loading,
+    allMateri: state.allMateri.bab,
+    loading: state.allMateri.loading,
   }
 }
 

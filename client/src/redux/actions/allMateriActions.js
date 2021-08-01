@@ -1,4 +1,4 @@
-import {GET_BAB_ALL, LOADING_BAB} from '../types/babTypes'
+import {GET_BAB_ALL, LOADING_BAB} from '../types/allMateriTypes'
 import axios from 'axios'
 
 export const getAllBab = () => dispatch => {

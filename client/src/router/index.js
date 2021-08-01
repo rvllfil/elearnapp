@@ -15,12 +15,16 @@ import AdminSubbab from '../pages/admin/Subbab'
 import AdminMateri from '../pages/admin/Materi'
 import AdminQuiz from '../pages/admin/Quiz'
 import Sertifikat from '../pages/Sertifikat'
+import Landing from '../pages/Landing'
 
 const Router = () => {
   return (
     <Switch>
       <Route path='/daftar'>
         <Register />
+      </Route>
+      <Route exact path='/'>
+        <Landing />
       </Route>
       <LogRoute path='/login' comp={Login} />
       <PrivateRoute exact path='/home' comp={Home} />

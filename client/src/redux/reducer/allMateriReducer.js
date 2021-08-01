@@ -1,11 +1,11 @@
-import { GET_BAB_ALL, LOADING_BAB } from '../types/babTypes'
+import { GET_BAB_ALL, LOADING_BAB } from '../types/allMateriTypes'
 
 const initialState = {
   bab: [],
   loading: false
 }
 
-const babReducer = (state = initialState, action) => {
+const allMateriReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BAB_ALL:
       return {
@@ -23,4 +23,4 @@ const babReducer = (state = initialState, action) => {
   }
 }
 
-export default babReducer
+export default allMateriReducer

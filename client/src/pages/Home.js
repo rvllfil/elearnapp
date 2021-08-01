@@ -4,7 +4,7 @@ import BabAccordion from '../components/BabAccordion'
 import NavBar from '../components/Navbar'
 import py from '../img/py.png'
 
-const Home = ({bab, loadingBab}) => {
+const Home = ({allMateri, loadingBab}) => {
   return (
     <div>
       <NavBar />
@@ -20,7 +20,7 @@ const Home = ({bab, loadingBab}) => {
         </div> :
         <>
           <div className='mt-3'></div>
-          <BabAccordion datas={bab}/>
+          <BabAccordion datas={allMateri}/>
         </>
       }
     </div>
@@ -29,8 +29,8 @@ const Home = ({bab, loadingBab}) => {
 
 const mapStateToProps = (state) => {
   return {
-    bab: state.bab.bab,
-    loadingBab: state.bab.loading 
+    allMateri: state.allMateri.bab,
+    loadingBab: state.allMateri.loading 
   }
 }
 

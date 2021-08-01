@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import babReducer from './babReducer'
+import allMateriReducer from './allMateriReducer'
 import authReducer from './authReducer'
 import errorReducer from './errorReducer'
 import progressReducer from './progressReducer'
@@ -9,7 +9,7 @@ import quizReducer from './quizReducer'
 import alertReducer from './alertReducer'
 
 const rootReducer = combineReducers({
-  bab: babReducer,
+  allMateri: allMateriReducer,
   subbab: subbabReducer,
   materi: materiReducer,
   quiz: quizReducer,

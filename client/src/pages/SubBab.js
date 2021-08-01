@@ -7,15 +7,15 @@ import Quiz from './Quiz'
 import Spinner from 'react-bootstrap/Spinner'
 import NavBar from '../components/Navbar'
 
-const SubBab = ({bab, loading}) => {
+const SubBab = ({allMateri, loading}) => {
   const { bab_id, sub_bab_id } = useParams()
   const [subBab, setSubBab] = useState({})
   const [pageData, setPageData] = useState([])
   const [page, setPage] = useState(1)
   
   useEffect(() => {
-    setSubBab(bab.filter(data => data.bab_id === parseInt(bab_id)).map(bab => bab.sub_bab.filter(sub_bab => sub_bab.sub_bab_id === parseInt(sub_bab_id)))[0])
-  }, [bab, bab_id, sub_bab_id])
+    setSubBab(allMateri.filter(data => data.bab_id === parseInt(bab_id)).map(allMateri => allMateri.sub_bab.filter(sub_bab => sub_bab.sub_bab_id === parseInt(sub_bab_id)))[0])
+  }, [allMateri, bab_id, sub_bab_id])
 
 
   useEffect(() => {
@@ -78,8 +78,8 @@ const SubBab = ({bab, loading}) => {
 
 const mapStateToProps = (state) => {
   return {
-    bab: state.bab.bab,
-    loading: state.bab.loading,
+    allMateri: state.allMateri.bab,
+    loading: state.allMateri.loading,
   }
 }
 
