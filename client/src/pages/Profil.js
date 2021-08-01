@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Container, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import NavBar from '../components/Navbar'
 import { retrieveUserProgress } from '../redux/actions/progressActions'
 import { retrieveSubbab } from '../redux/actions/subbabActions'
@@ -76,6 +77,13 @@ const Profil = ({
             </div>
             }
           {/* /.card-body */}
+        </div>
+        <div className="card">
+          <div className="card-body text-center">
+            <Link to='/sertifikat'>
+              <button className='btn btn-primary btn-lg'>Lihat Sertifikat</button>
+            </Link>
+          </div>
         </div>
       </Container>
     </>

@@ -14,6 +14,7 @@ import AdminBab from '../pages/admin/Bab'
 import AdminSubbab from '../pages/admin/Subbab'
 import AdminMateri from '../pages/admin/Materi'
 import AdminQuiz from '../pages/admin/Quiz'
+import Sertifikat from '../pages/Sertifikat'
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
       <LogRoute path='/login' comp={Login} />
       <PrivateRoute exact path='/home' comp={Home} />
       <PrivateRoute exact path='/profil' comp={Profil} />
+      <PrivateRoute exact path='/sertifikat' comp={Sertifikat} />
       <PrivateRoute exact path='/materi/:bab_id/:sub_bab_id' comp={SubBab} />
       <PrivateRoute exact path='/quiz/:bab_id/:sub_bab_id' comp={SoalQuiz} />
       
