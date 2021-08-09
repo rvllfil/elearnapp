@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import logo from '../img/logo.jpg'
+import logo from '../img/logo.png'
 import { Link, useHistory } from 'react-router-dom'
 import  Container  from 'react-bootstrap/Container'
 import { useEffect, useState } from 'react'
@@ -69,10 +69,10 @@ const Login = ({login, error}) => {
 
   return (
     <>
-      <Container>
-        <div className='cont'>
-          <div className='mt-5 d-flex justify-content-center'>
-            <img className='py-5 mt-3' src={logo} alt="OWL-Ulin" width="100" />
+      <Container className='mw'>
+        {/* <div className='cont'> */}
+          <div className='mt-5 d-flex justify-content-center py-5'>
+            <img src={logo} alt="OWL-Ulin" width="192" />
           </div>
           <Form className='px-2 mt-2' method='post' onSubmit={onSubmit}>
             <Form.Group className=' mt-4'>
@@ -118,7 +118,7 @@ const Login = ({login, error}) => {
               <Link className='violett ml-2' to='/daftar'>Daftar</Link>
             </div>
           </Form>
-        </div>
+        {/* </div> */}
       </Container>
     </>
   )
