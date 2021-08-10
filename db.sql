@@ -30,18 +30,18 @@ CREATE TABLE materi(
       REFERENCES sub_bab(sub_bab_id)
       ON DELETE CASCADE
 );
-DROP TABLE IF EXISTS latihan CASCADE;
-CREATE TABLE latihan(
-  latihan_id INT GENERATED ALWAYS AS IDENTITY,
-  materi_id INT NOT NULL,
-  soal VARCHAR,
-  jawaban VARCHAR,
-  PRIMARY KEY(latihan_id), 
-  CONSTRAINT fk_materi
-    FOREIGN KEY(materi_id)
-      REFERENCES materi(materi_id)
-      ON DELETE CASCADE
-);
+-- DROP TABLE IF EXISTS latihan CASCADE;
+-- CREATE TABLE latihan(
+--   latihan_id INT GENERATED ALWAYS AS IDENTITY,
+--   materi_id INT NOT NULL,
+--   soal VARCHAR,
+--   jawaban VARCHAR,
+--   PRIMARY KEY(latihan_id), 
+--   CONSTRAINT fk_materi
+--     FOREIGN KEY(materi_id)
+--       REFERENCES materi(materi_id)
+--       ON DELETE CASCADE
+-- );
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users(
   user_id INT GENERATED ALWAYS AS IDENTITY,

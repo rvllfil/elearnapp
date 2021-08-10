@@ -7,6 +7,8 @@ import babReducer from './babReducer'
 import subbabReducer from './subbabReducer'
 import materiReducer from './materiReducer'
 import quizReducer from './quizReducer'
+import soalQuizReducer from './soalQuizReducer'
+import jawabanQuizReducer from './jawabanQuizReducer'
 import alertReducer from './alertReducer'
 
 const rootReducer = combineReducers({
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   bab: babReducer,
   materi: materiReducer,
   quiz: quizReducer,
+  soalQuiz: soalQuizReducer,
+  jawabanQuiz: jawabanQuizReducer,
   auth: authReducer,
   alert: alertReducer,
   error: errorReducer,

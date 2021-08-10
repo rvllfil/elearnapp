@@ -100,9 +100,24 @@ const AdminBab = ({
   return (
     <div className='wrapper'>
       <Header />
-      <Menu />
       <div className="content-wrapper">
-        <div className="content pt-3">
+      <section className="content-header">
+          <div className="container-fluid">
+            <div className="row mb-2">
+              <div className="col-sm-6">
+                <h1>
+                  Data Bab
+                </h1>
+              </div>
+              <div className="col-sm-6">
+                <ol className="breadcrumb float-sm-right">
+                  <li className="breadcrumb-item active">Bab</li>
+                </ol>
+              </div>
+            </div>
+          </div>{/* /.container-fluid */}
+        </section>
+        <div className="content">
           <div className="container-fluid">
             <div className="row">
               <div className="col-12">

@@ -20,7 +20,7 @@ const materiReducer = (state = initialState, action) => {
     case CREATE_MATERI:
       return{
         ...state,
-        materi: [...state.materi, ...payload],
+        materi: [...state.materi, payload],
         loading: false
       }
     
@@ -35,8 +35,11 @@ const materiReducer = (state = initialState, action) => {
       return {
         ...state,
         materi: state.materi.map(data => {
-          if(data.id === payload.id){
-            return {...data, ...payload}
+          if(data.materi_id === payload.materi_id){
+            return {
+              ...data, 
+              ...payload
+            }
           } else {
             return data
           }
@@ -45,9 +48,10 @@ const materiReducer = (state = initialState, action) => {
       }
     
     case DELETE_MATERI:
+      console.log(payload.materi_id)
       return {
         ...state,
-        materi: state.materi.filter(item => item.id !== payload.id)
+        materi: state.materi.filter(item => item.materi_id !== payload.materi_id)
       }
 
     case LOADING_MATERI:

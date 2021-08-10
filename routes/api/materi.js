@@ -124,9 +124,9 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const {id} = req.params
   try {
-    const deleteMateri = await pool.query("DELETE FROM materi WHERE materi_id = $1", [id])
-    if(!deleteMateri) throw Error("Data Materi tidak ditemukan")
-    res.status(200).json({msg: 'data berhasil dihapus'})
+    const deleteMateri = await pool.query("DELETE FROM materi WHERE materi_id = $1 RETURNING *", [id])
+    if(!deleteMateri.rows) throw Error("Data Materi tidak ditemukan")
+    res.status(200).json(deleteMateri.rows[0])
   } catch (e) {
     res.status(400).json({
       msg: e.message

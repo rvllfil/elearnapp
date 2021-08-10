@@ -20,7 +20,7 @@ const quizReducer = (state = initialState, action) => {
     case CREATE_QUIZ:
       return{
         ...state,
-        quiz: [...state.quiz, ...payload],
+        quiz: [...state.quiz, payload],
         loading: false
       }
     
@@ -35,7 +35,7 @@ const quizReducer = (state = initialState, action) => {
       return {
         ...state,
         quiz: state.quiz.map(data => {
-          if(data.id === payload.id){
+          if(data.quiz_id === payload.quiz_id){
             return {...data, ...payload}
           } else {
             return data
@@ -47,7 +47,7 @@ const quizReducer = (state = initialState, action) => {
     case DELETE_QUIZ:
       return {
         ...state,
-        quiz: state.quiz.filter(item => item.id !== payload.id)
+        quiz: state.quiz.filter(item => item.quiz_id !== payload.quiz_id)
       }
 
     case LOADING_QUIZ:

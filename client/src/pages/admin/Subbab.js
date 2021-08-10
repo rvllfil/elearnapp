@@ -1,6 +1,5 @@
 import { connect } from "react-redux"
 import Header from "../../components/admin/template/Header"
-import Menu from "../../components/admin/template/Menu"
 import Footer from "../../components/admin/template/Footer"
 import { retrieveSubbab, createSubbab, updateSubbab, deleteSubbab } from "../../redux/actions/subbabActions"
 import { clearAlert } from "../../redux/actions/alertActions"
@@ -113,7 +112,6 @@ const AdminSubbab = ({
   return (
     <div className='wrapper'>
       <Header />
-      <Menu />
       <div className="content-wrapper">
         <div className="content pt-3">
           <div className="container-fluid">
