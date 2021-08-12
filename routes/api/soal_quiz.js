@@ -12,10 +12,32 @@ router.get('/', async (req, res) => {
   const keys = Object.keys(query)
   let sql
   if(keys.length < 1) {
-    sql = format('SELECT * FROM soal_quiz;')
+    sql = format(`
+    select
+    soal_quiz_id, quiz_id, text_soal,
+      (
+        select array_to_json(array_agg(s))
+        from (
+          select jawaban_quiz_id, text_jawaban, benar
+          from jawaban_quiz where soal_quiz.soal_quiz_id = jawaban_quiz.soal_quiz_id
+        ) s
+      ) as jawaban
+    from soal_quiz
+  `, data)
   } else {
     const data = dataAnd(query, keys)
-    sql = format('SELECT * FROM soal_quiz WHERE %s;', data)
+    sql = format(`
+      select
+      soal_quiz_id, quiz_id, text_soal,
+        (
+          select array_to_json(array_agg(s))
+          from (
+            select jawaban_quiz_id, text_jawaban, benar
+            from jawaban_quiz where soal_quiz.soal_quiz_id = jawaban_quiz.soal_quiz_id
+          ) s
+        ) as jawaban
+      from soal_quiz where %s
+    `, data)
   }
   try {
     const soal_quiz = await pool.query(sql)
@@ -54,7 +76,19 @@ router.post('/', async (req, res) => {
   try {
     const newSoalQuiz = await pool.query("INSERT INTO soal_quiz (quiz_id, text_soal) VALUES ($1, $2) RETURNING *", [quiz_id, text_soal])
     if(!newSoalQuiz.rows) throw Error('Terjadi Kesalahan ketika menyimpan Data Soal Quiz')
-    res.status(201).json(newSoalQuiz.rows[0])
+    const soalQuiz = await pool.query(`
+    select
+    soal_quiz_id, quiz_id, text_soal,
+      (
+        select array_to_json(array_agg(s))
+        from (
+          select jawaban_quiz_id, text_jawaban, benar
+          from jawaban_quiz where soal_quiz.soal_quiz_id = jawaban_quiz.soal_quiz_id
+        ) s
+      ) as jawaban
+    from soal_quiz where soal_quiz_id = $1
+  `, [newSoalQuiz.rows[0].soal_quiz_id])
+    res.status(201).json(soalQuiz.rows[0])
   } catch (e) {
     res.status(400).json({
       msg: e.message
@@ -73,7 +107,19 @@ router.put('/:id', async (req, res) => {
   try {
     const updateSoalQuiz = await pool.query(sql)
     if(!updateSoalQuiz.rows) throw Error('Terjadi Kesalahan ketika mengedit Data Soal Quiz')
-    res.status(200).json(updateSoalQuiz.rows[0])
+    const soalQuiz = await pool.query(`
+    select
+    soal_quiz_id, quiz_id, text_soal,
+      (
+        select array_to_json(array_agg(s))
+        from (
+          select jawaban_quiz_id, text_jawaban, benar
+          from jawaban_quiz where soal_quiz.soal_quiz_id = jawaban_quiz.soal_quiz_id
+        ) s
+      ) as jawaban
+    from soal_quiz where soal_quiz_id = $1
+  `, [updateSoalQuiz.rows[0].soal_quiz_id])
+    res.status(200).json(soalQuiz.rows[0])
   } catch (e) {
     res.status(400).json({
       msg: e.message
@@ -89,6 +135,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const deleteSoalQuiz = await pool.query("DELETE FROM soal_quiz WHERE soal_quiz_id = $1 RETURNING *", [id])
     if(!deleteSoalQuiz.rows) throw Error("Data Soal Quiz tidak ditemukan")
+    const deleteJawaban = await pool.query("DELETE FROM jawaban_quiz WHERE soal_quiz_id = $1", [id])
     res.status(200).json(deleteSoalQuiz.rows[0])
   } catch (e) {
     res.status(400).json({

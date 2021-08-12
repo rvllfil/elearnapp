@@ -36,7 +36,7 @@ const Router = () => {
       <PrivateRoute exact path='/materi/:bab_id/:sub_bab_id' comp={SubBab} />
       <PrivateRoute exact path='/quiz/:bab_id/:sub_bab_id' comp={SoalQuiz} />
       
-      <AdminRoute exact path="/admin" comp={AdminHome}/>
+      <AdminRoute exact path="/admin" comp={AdminBab}/>
       <AdminRoute path="/admin/bab" comp={AdminBab}/>
       <AdminRoute path="/admin/sub-bab" comp={AdminSubbab}/>
       <AdminRoute path="/admin/materi" comp={AdminMateri}/>

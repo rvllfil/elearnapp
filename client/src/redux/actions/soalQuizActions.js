@@ -25,7 +25,7 @@ export const retrieveSoalQuiz = (id) => dispatch => {
 export const createSoalQuiz = (data) => dispatch => {
   dispatch(setLoadingSoalQuiz())
   axios
-    .post('/api/soal_quiz', data)
+    .post('/api/soal-quiz', data)
     .then(res =>
       dispatch({
         type: CREATE_SOAL_QUIZ,
@@ -39,17 +39,17 @@ export const createSoalQuiz = (data) => dispatch => {
 }
 
 export const updateSoalQuiz = ({
-  quiz_id, text_soal
+  soal_quiz_id, quiz_id, text_soal
 }) => dispatch => {
   dispatch(setLoadingSoalQuiz())
   axios
-    .put(`/api/soal_quiz/${quiz_id}`, {text_soal})
+    .put(`/api/soal-quiz/${soal_quiz_id}`, {quiz_id, text_soal})
     .then(res =>
       dispatch({
         type: UPDATE_SOAL_QUIZ,
         payload: res.data
       }),
-      dispatch(setAlertSuccess('Data soal_quiz berhasil diubah'))
+      dispatch(setAlertSuccess('Data soal-quiz berhasil diubah'))
     )
     .catch(err =>
       dispatch(setAlertFailed(`${err.response.status}: ${err.response.data.msg}`))
@@ -58,13 +58,13 @@ export const updateSoalQuiz = ({
 
 export const deleteSoalQuiz = (id) => dispatch => {
   axios
-    .delete(`/api/soal_quiz/${id}`)
+    .delete(`/api/soal-quiz/${id}`)
     .then(res =>
       dispatch({
         type: DELETE_SOAL_QUIZ,
         payload: res.data
       }),
-      dispatch(setAlertSuccess('Berhasil menghapus data soal_quiz'))
+      dispatch(setAlertSuccess('Berhasil menghapus data soal-quiz'))
     )
     .catch(err =>
       dispatch(setAlertFailed(`${err.response.status}: ${err.response.data.msg}`))

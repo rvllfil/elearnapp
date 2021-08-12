@@ -75,14 +75,33 @@ const Profil = ({
                 </div>
               </div>
             </div>
-            }
-          {/* /.card-body */}
+          }
         </div>
         <div className="card">
+        <div className="card-header">
+            <h3 className="card-title">Sertifikat</h3>
+          </div>
           <div className="card-body text-center">
-            <Link to='/sertifikat'>
-              <button className='btn btn-primary btn-lg'>Lihat Sertifikat</button>
-            </Link>
+            { 
+              loadingSubbab && loading ? 
+              <div className="row">
+              <div className="col-12">
+                <div className="card">
+                  <div className='d-flex align-items-center justify-content-center p-5'> 
+                    <Spinner style={{width: '4rem', height: '4rem'}} animation="border" variant='primary'/>
+                  </div>
+                </div>
+              </div>
+            </div>:
+            progress.length >= subbab.length ? 
+              <Link to='/sertifikat'>
+                <button className='btn btn-primary btn-lg'>Lihat Sertifikat</button>
+              </Link> :
+              <Link to='/profil'>
+                <button className='btn btn-secondary btn-lg'>Lihat Sertifikat</button>
+              </Link>
+            }
+            
           </div>
         </div>
       </Container>

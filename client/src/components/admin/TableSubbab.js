@@ -54,7 +54,8 @@ const TableSubbab = ({
             <table className="table table-hover text-nowrap">
               <thead>
                 <tr>
-                  <th>Bab id</th>
+                  <th>Bab Id</th>
+                  <th>Sub Bab Id</th>
                   <th>Judul Sub bab</th>
                   <th>Urutan Sub Bab</th>
                   <th>Action</th>
@@ -66,6 +67,7 @@ const TableSubbab = ({
                     <>
                       <tr key={index}>
                         <td>{data.bab_id}</td>
+                        <td>{data.sub_bab_id}</td>
                         <td className='text-capitalize'>{data.judul_sub_bab}</td>
                         <td>{data.urutan_sub_bab}</td>
                         <td>

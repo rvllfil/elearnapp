@@ -74,14 +74,14 @@ const Header = () => {
             <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               {/* Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library */}
-              <li className="nav-item" data-widget="pushmenu" role="button">
+              {/* <li className="nav-item" data-widget="pushmenu" role="button">
                 <Link to="/admin" className={`nav-link ${path === '/admin' ? 'active': ''}`}>
                   <i className="nav-icon fas fa-tachometer-alt" />
                   <p>
                     Dashboard
                   </p>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item" data-widget="pushmenu" role="button">
                 <Link to="/admin/bab" className={`nav-link ${path === '/admin/bab' ? 'active': ''}`}>
                   <i className="nav-icon fas fa-table" />
